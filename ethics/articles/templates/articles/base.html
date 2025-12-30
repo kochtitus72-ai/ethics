@@ -1,0 +1,35 @@
+<!Doctype html>
+<!--articles/templates/articles/base.html -->
+<html data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Ethics{% endblock %}</title>
+        {% load static %}
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="{% static 'articles/css/css/pico.min.css' %}"
+        />
+        <!-- custom CSS -->
+        <link rel="stylesheet" href="{% static 'articles/css/style.css' %}" />
+    </head>
+    <body>
+        <!-- Flex container for sidebar + content -->
+        <div>
+            <h2>Ethics</h2>
+
+            <!-- Main Content -->
+            <main>
+                {% block content %}
+                <!-- Page-specific content will be injected here -->
+                {% endblock %}
+            </main>
+        </div>
+
+        <!-- Footer -->
+        {% include "articles/footer.html" %}
+
+        <!-- Custom JS -->
+        <script src="{% static 'articles/js/main.js' %}"></script>
+    </body>
+</html>

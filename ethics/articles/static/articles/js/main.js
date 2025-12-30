@@ -1,0 +1,3 @@
+/*
+And this is the entry js file for this project
+*/
