@@ -1,6 +1,0 @@
-{% extends "articles/base.html" %}
-<h1>Delete {{ article.title }}?</h1>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm</button>
-</form>
