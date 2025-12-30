@@ -1,0 +1,27 @@
+<!--articles/templates/articles/article_list.html -->
+{% extends "articles/base.html" %} {% block title %}Articles{% endblock %} 
+{% block content %}
+
+<p><a href="{% url 'article_create' %}"> New Article</a></p>
+<form method="get" action=""> <input type="text" name="q" placeholder="Search..." value="{{ query|default:'' }}"> <button type="submit">Search</button> </form>
+<ul>
+    {% for article in articles %}
+    <li>
+        <h3>
+            <a href="{% url 'article_detail' article.public_id %}">
+                {{ article.public_id }}
+            </a>
+        </h3>
+        {% if article.location %}
+        <p><strong>Location:</strong> {{ article.location }}</p>
+        {% endif %}
+        <p>
+            {{ article.content|truncatewords:20 }}
+            <a href="{% url 'article_detail' article.public_id %}">Read more</a>
+        </p>
+    </li>
+    {% empty %}
+    <li>No articles available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

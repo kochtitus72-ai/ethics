@@ -1,0 +1,21 @@
+<!--articles/templates/articles/article_detail.html -->
+{% extends "articles/base.html" %} {% block title %}Article Detail{% endblock %}
+{% block content %}
+<h1>{{ article.public_id }}</h1>
+
+{% if article.location %}
+<p><strong>Location:</strong> {{ article.location }}</p>
+{% endif %}
+
+<p>{{ article.content }}</p>
+<!-- Show the real title only to staff/admin -->
+{% if request.user.is_staff or request.user.is_superuser %}
+<p><strong>Real Title:</strong> {{ article.title }}</p>
+{% endif %}
+
+<p>
+    <a href="{% url 'article_update' article.public_id %}">Edit</a> |
+    <a href="{% url 'article_delete' article.public_id %}">Delete</a> |
+    <a href="{% url 'article_list' %}">Go back</a>
+</p>
+{% endblock %}
